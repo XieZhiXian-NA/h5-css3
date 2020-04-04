@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        *{padding: 0;margin:0;}
+        body{background: #1b1b1b;}
+        #div1{margin:50px auto; width:500px; height: 600px;}
+        canvas{background: #fff;}
+    </style>
+    <script type="text/javascript">
+    </script>
+</head>
+<body>
+<div id="div1">
+    <canvas id="myCanvas" width="500" height="600"></canvas>
+</div>
+<script>
+    var c = document.getElementById('myCanvas');
+    var content =c.getContext('2d');
+
+    Array.prototype.ec_bse=function(time,__2d,images_bs,fun){
+        console.log(__2d);
+        if(this.length<2){
+            console.log("Array's length is not defined");
+            return 0;
+        }
+        this.now_line=0;
+        this.next_line=1;
+        function yc_bse(p0,p1,t){
+            return p0+(p1-p0)*t;
+        }
+        function ecs_bse(p0,p1,p2,t){
+            return (1-t)*(1-t)*p0+2*t*(1-t)*p1+t*t*p2;
+        }
+        function ec_bse_no_time(start_p,end_p,gd_p,canvas_2d,fun){
+            var ___2d= canvas_2d;
+            var t=0;
+            var cd=Math.sqrt((start_p.x-gd_p.x)*(start_p.x-gd_p.x)+(start_p.y-gd_p.y)*(start_p.y-gd_p.y)+(end_p.x-gd_p.x)*(end_p.x-gd_p.x)+(end_p.y-gd_p.y)*(end_p.y-gd_p.y));
+            var t_add=1/cd;
+            for(var j=0;j<cd;j++){
+                //console.log("aaa");
+                ___2d.save();
+                ___2d.beginPath();
+                var end_x=ecs_bse(start_p.x,yc_bse(start_p.x,gd_p.x,t),yc_bse(gd_p.x,end_p.x,t),t);
+                var end_y=ecs_bse(start_p.y,yc_bse(start_p.y,gd_p.y,t),yc_bse(gd_p.y,end_p.y,t),t);
+                ___2d.strokeStyle="#999999";
+                ___2d.arc(end_x,end_y,1,0,2*Math.PI);
+                ___2d.stroke();
+                ___2d.restore();
+                ___2d.closePath();
+                if(t>=1){
+                    t=1;
+                }else{
+                    t=t+t_add;
+                }
+
+//            ec_bse_no_time({x:0,y:200},{x:300,y:200},{x:75,y:50});
+            }
+            if(fun){
+                fun();
+            }
+        }
+        function get_gd_p(start_p,end_p){
+            var cd=Math.sqrt((start_p.x-end_p.x)*(start_p.x-end_p.x)+(start_p.y-end_p.y)*(start_p.y-end_p.y)+(end_p.x-end_p.x)*(end_p.x-end_p.x)+(end_p.y-end_p.y)*(end_p.y-end_p.y));
+            return {
+                x:yc_bse(start_p.x,end_p.x,0.5)-cd/4,
+                y:yc_bse(start_p.y,end_p.y,0.5)-cd/4
+            };
+        }
+        this.tttt=null;
+        var _THIS=this;
+        var t=0;
+        var t_add=1/time;
+        var start_p=this[this.now_line];
+        var end_p=this[this.next_line];
+        var gd_p=get_gd_p(start_p,end_p);
+        for(var i=0;i<this.length;i++){
+            if(typeof _THIS[i+1]=="undefined"){
+                continue;
+            }
+            (function(jie){
+                var gd_p_bf=get_gd_p(_THIS[jie],_THIS[jie+1]);
+                ec_bse_no_time(_THIS[jie],_THIS[jie+1],gd_p_bf,__2d);
+            })(i);
+        }
+        function change_(){
+            __2d.save();
+            __2d.beginPath();
+            __2d.clearRect(0,0,__2d.canvas.width,__2d.canvas.height);
+            var end_x=ecs_bse(start_p.x,yc_bse(start_p.x,gd_p.x,t),yc_bse(gd_p.x,end_p.x,t),t);
+            var end_y=ecs_bse(start_p.y,yc_bse(start_p.y,gd_p.y,t),yc_bse(gd_p.y,end_p.y,t),t);
+            __2d.strokeStyle="#999999";
+            __2d.drawImage(_THIS.bf,0,0);
+            __2d.drawImage(images_bs,end_x-images_bs.width/2,end_y-images_bs.height/2);
+            __2d.stroke();
+            __2d.restore();
+            __2d.closePath();
+            if(t>=1){
+                t=1;
+                clearInterval(_THIS.tttt);
+                __2d.clearRect(0,0,__2d.canvas.width,__2d.canvas.height);
+                __2d.drawImage(_THIS.bf,0,0);
+                _THIS.now_line++;
+                if(typeof _THIS[_THIS.now_line+1]=="undefined"){
+                    console.log("aaa");
+                    if(_THIS.autoPlay){
+                        _THIS.now_line=0;
+                        start_p=_THIS[_THIS.now_line];
+                        end_p=_THIS[_THIS.now_line+1];
+                        gd_p=get_gd_p(start_p,end_p);
+                        t=0;
+                        _THIS.tttt=setInterval(change_,1);
+                    }
+                }else{
+                    start_p=_THIS[_THIS.now_line];
+                    end_p=_THIS[_THIS.now_line+1];
+
+                    gd_p=get_gd_p(start_p,end_p);
+                    t=0;
+                    _THIS.tttt=setInterval(change_,1);
+                }
+
+                if(fun){fun();}
+                return 1;}else{
+                t=t+t_add;
+            }
+        }
+        _THIS.bf=document.createElement("canvas");
+        _THIS.bf.width=__2d.canvas.width;
+        _THIS.bf.height=__2d.canvas.height;
+        _THIS.bf._2d=_THIS.bf.getContext("2d");
+        _THIS.bf._2d.drawImage(__2d.canvas,0,0);
+        _THIS.tttt=setInterval(change_,1);
+    };
+    var images=new Image();
+    var img=[{x:50,y:250},{x:350,y:250},{x:350,y:50},{x:50,y:50},{x:50,y:250}];
+    img.autoPlay=1;
+    images.src="http://developer.baidu.com/map/jsdemo/img/car.png";
+
+    images.onload=function(){
+        img.ec_bse(300,content,images);
+    };
+
+</script>
+</body>
+</html>

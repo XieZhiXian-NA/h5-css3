@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .nav{
+            width:1210px ;
+            height:48px ;
+            background-color:#E8e7e3;
+            margin: 100px auto;
+            
+        }
+        .nav li{
+            float: left;
+            line-height: 48px;
+        }
+        /* 为了不仅仅只有点击文字才可以跳转 */
+        .nav a{
+           text-decoration: none;
+           color: #777777;
+           font-size: 18px;
+           display: block;
+           padding: 0px 39px; 
+
+        }
+        .nav a:hover{
+            background-color: #383838;
+        }
+        .nav li:last-child a{
+            padding: 0px 50px 0px 50px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav">
+        <li><a href="#">HTML/CSS</a></li>
+        <li><a href="#">Browser Side</a></li>
+        <li><a href="#">Server Side</a></li>
+        <li><a href="#">Programing</a></li>
+        <li><a href="#">XML</a></li>
+        <li><a href="#">Web Building</a></li>
+        <li><a href="#">Reference</a></li>
+    </ul>
+</body>
+</html>

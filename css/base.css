@@ -1,0 +1,19 @@
+.clearfix::before,
+.clearfix::after{
+   content: '';
+   clear: both;
+   display: table;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+body{
+    font:14px/1.5 Helvetica Nave ,Helvetica,Arial,Microsoft YaHei;
+    color: #333;
+    min-width: 1226px;
+}
+.w{
+   width: 1226px;
+   margin: 0 auto;
+}

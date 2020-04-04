@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+ 
+            height: 271px;
+            width: 132px;
+            margin: 0 auto;
+            background-image: url(./demos/assets/images/bigtap-mitu-queue-big.png);
+            background-position: 0 0;
+            transition: 1s steps(3);
+        }
+        .box1:hover{
+            background-position: -396px 0;
+        }
+        */
+
+        .box1{
+            height: 256px;
+            width: 256px;
+            margin: 0 auto;
+            background-image: url("./demos/assets/images/bg2.png");
+            animation: run 1s steps(6) infinite;
+            /* 有几个小图片 就写多少步 */
+
+        }
+
+        @keyframes run {
+            from{
+                background-position: 0 0;
+            }
+            to{
+                /* 背景图片会平铺 不需要考虑最后的空白位置 */
+                background-position: -1536px 0 ;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        
+    </div>
+</body>
+</html>

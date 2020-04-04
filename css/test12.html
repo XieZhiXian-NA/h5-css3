@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            perspective: 800px;
+        }
+        .cube{
+            height: 200px;
+            width: 200px;
+
+            transform-style: preserve-3d;
+            margin: 0 auto;
+            margin-top: 50px;
+            animation: run 20s;
+        }
+        .cube>div{
+              width: 200px;
+              height: 200px;
+              opacity: 0.7;
+              position: absolute;
+        }
+        
+        img{
+            vertical-align: top;
+        }
+        .box1{
+              transform: rotateY(90deg) translateZ(100px);
+              /* animation: run 2s; */
+        }
+        .box2{
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        .box3{
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        .box4{
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        .box5{
+            transform:  rotateY(180deg) translateZ(100px);
+        }
+        .box6{
+            transform: rotateY(0deg) translateZ(100px);
+        }
+        @keyframes run{
+            from{
+                transform:  rotateX(0) rotateZ(0);
+            }
+            to{
+                transform:  rotateX(1turn) rotateZ(1turn);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cube">
+             <div class="box1">
+                 <img src="./demos/assets/images/1.jpg" alt="">
+             </div>
+             <div class="box2">
+                <img src="./demos/assets/images/2.jpg" alt="">
+            </div>
+            <div class="box3">
+                <img src="./demos/assets/images/3.jpg" alt="">
+            </div>
+            <div class="box4">
+               <img src="./demos/assets/images/4.jpg" alt="">
+           </div>
+           <div class="box5">
+            <img src="./demos/assets/images/5.jpg" alt="">
+        </div>
+        <div class="box6">
+           <img src="./demos/assets/images/6.jpg" alt="">
+       </div>
+   </div>
+   
+    </div>
+</body>
+</html>

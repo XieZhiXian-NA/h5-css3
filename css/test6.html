@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img-list{
+            width: 590px;
+            height: 470px;
+            margin: 0 auto; 
+            list-style: none;
+            position: relative;
+        }
+        .img-list li{
+            position: absolute;
+            
+        }
+
+        .pointer{
+            position: absolute;
+            z-index: 9999;
+            bottom: 20px;
+            left: 40px;
+           
+        }
+         .pointer a{
+             /* 行内元素不支持设置框高所以看不见 */
+            float: left;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin:0px 2px;
+            background-color:rgba(255,255,255,.3);
+            /* 将背景颜色只设置到内容区 */
+            background-clip: content-box;
+            border: 2px solid transparent;
+            
+        }
+        .pointer .active,
+        .pointer a:hover{
+            background-color: #fff;
+            border: 2px solid rgba(255, 255,255,.3);
+        }
+        
+    </style>
+</head>
+<body>
+    <ul class="img-list">
+        <li >
+            <a href="#">
+                <img src="./demos/assets/images/5.webp" alt="xx">
+            </a>
+        </li>
+        <li >
+            <a href="#">
+                <img src="./demos/assets/images/6.webp" alt="xx">
+            </a>
+        </li>
+        <li >
+            <a href="#">
+                <img src="./demos/assets/images/7.webp" alt="xx">
+            </a>
+        </li>
+        <li >
+            <a href="#">
+                <img src="./demos/assets/images/7.jpg" alt="xx">
+            </a>
+        </li>
+        <div class="pointer">
+            <a class="active" href="#" ></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,417 @@
+.topbar-wrapper{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #333;
+}
+.topbar li{
+    float: left;
+}
+.topbar a{
+   font-size: 12px;
+   color: #b0b0b0; 
+   display: block;
+}
+.topbar a:hover{
+    color: white;
+}
+.topbar .line{
+    font-size: 12px;
+    color: #424242;
+    margin: 0 8px;
+    margin-top: -1px;
+}
+.service{
+    float: left;
+}
+.app .qrcode{
+   
+    position: absolute;
+    z-index: 999;
+    width: 124px;
+    height: 0px;
+    overflow: hidden;
+    left: -40px;
+    background-color:#fff;
+    line-height: 1;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    transition: height 0.3s;
+}
+.app .qrcode span{
+    color: #000;
+    font-size: 14px;
+}
+.app .qrcode img{
+    width: 90px;
+    margin: 17px 17px;
+    margin-bottom: 14px;  
+}
+.app{
+    position: relative;
+}
+.app::after{
+    display: none;
+    width: 0;
+    height: 0;
+    content: '';
+    position:absolute;
+    border: 8px solid transparent;
+    border-top: none;
+    border-bottom-color: white;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+}
+.app:hover .qrcode,
+.app:hover::after{
+    display: block;
+    height: 148px;
+}
+.shop-cart,.user-info{
+    float: right;
+}
+.shop-cart{
+    margin-left: 26px;
+}
+.shop-cart a{
+   width: 120px;
+   background-color: #424242;
+   text-align: center;
+}
+.shop-cart .icon{
+    margin-right: 2px;
+    
+}
+.shop-cart:hover a{
+    background-color: white;
+    color: #ff6706;
+}
+.header-wrapper{
+    position: relative;
+}
+.header{
+    height: 100px;
+}
+.header .logo{
+    float: left;
+    margin-top: 22px;
+    height: 55px;
+    width: 55px;
+    position: relative;
+    overflow: hidden;
+    /* 隐藏文字 */
+    text-indent: -9999px;
+}
+.header .logo a{
+    position: absolute;
+    height: 55px;
+    width: 55px;
+    left: 0;
+    background-color:#ff6700;
+    background-image: url('./demos/assets/images/mi-logo.png');
+    background-position: center;
+    transition: left 0.3s;
+}
+.header .logo .home{
+    background-image: url('./demos/assets/images/mi-home.png');
+    left: -55px;
+}
+.header .logo:hover .mi{
+    left: 55px;
+}
+.header .logo:hover .home{
+    left: 0px;
+}
+.header .nav-wrapper{
+    float: left;
+    margin-left: 7px;
+}
+ .nav > li{
+    float: left;
+}
+
+.all-goods-wrapper{
+    position: relative;
+  
+}
+.nav .left-menu{
+    width: 234px;
+    height: 420px;
+    background-color: rgba(0,0,0,.6);
+    position: absolute;
+    z-index: 8888;
+    left: -120px; 
+     line-height: 1;
+     padding: 20px 0;
+    
+     
+}
+.nav .left-menu a{
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    color: white; 
+    margin-right: 0px;
+    padding: 0 30px;
+    font-size: 14px;
+}
+.nav .left-menu a:hover{
+    color: white;
+    background-color: #ff6700;
+}
+.nav .left-menu a span{
+    float: right;
+}
+
+.header .nav{
+    height: 100px;
+    line-height: 100px;
+    padding-left: 58px;
+    
+} 
+.nav-wrapper li a{
+   display: block;
+   font-size: 16px;
+   margin-right: 20px;
+}
+.nav-wrapper li a:hover{
+    color: #ff6700;
+}
+.all-goods{
+    visibility: hidden;
+}
+.nav .goods-info{
+    height: 0;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    top:100px;
+    left: 0; 
+    transition: height 0.3;
+    z-index: 9999;
+}
+.nav .show:hover ~ .goods-info,
+.goods-info:hover{
+   height: 228px;
+   border-top: 1px rgb(224,224,224) solid;
+    box-shadow: 0 5px 3px rgba(0,0,0,.2);
+}
+.search-wrapper{
+    width: 276px;
+    height: 50px;
+    float: right;
+    margin-top: 25px;
+    margin-left: 20px;
+   
+}
+.search-wrapper .search-inp{
+    box-sizing: border-box;
+    width: 224px;
+    float: left;
+    padding: 0px;
+    border: none;
+    height: 50px;
+    padding:0 10px ;
+    font-size: 16px; 
+    border: 1px solid rgb(224,224,224);
+    outline: none;
+    
+}
+.search-wrapper .search-btn{
+    width: 52px;
+    height: 50px;
+    float: left;
+    padding: 0px;
+    border: none;
+    background-color: white;
+    color: #616161;
+    font-size: 16px;
+    border-left: none;
+    border: 1px solid rgb(224,224,224);
+    outline: none;
+}
+.search-inp:focus,
+.search-inp:focus+button{
+    border-color: #ff6700;
+   
+}
+.search-btn:hover{
+    background-color:#ff6700;
+    color:white;
+    border: none;
+}
+.banner{
+    position: relative;
+    height: 460px;
+}
+.banner .img-list li{
+    position: absolute;
+}
+.banner img{
+    width: 100%;
+    vertical-align: top;
+}
+.pointer {
+
+    position: absolute;
+    right: 35px;
+    bottom: 22px;
+}
+.pointer a{
+    float: left;
+    width: 6px;
+    height: 6px;
+    background-color: rgba(0,0,0,.4);
+    border: 2px rgba(255,255,255,.4) solid;
+    border-radius: 50%;
+    margin-left: 6px;
+}
+.pointer a:hover,
+.pointer a:active{
+    background-color:rgba(255,255,255,.4) ;
+    border-color: rgba(0,0,0,.4);
+}
+.prev-next a{
+    width: 41px;
+    height: 69px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    background-image: url('./demos/assets/images/icon-slides.png');
+}
+.prev-next .prev{
+   left: 234px;
+   background-position: -84px 0;
+}
+.prev-next .next{
+    right: 0;
+    background-position: -125px 0;
+}
+.prev-next .prev:hover{
+    background-position: 0 0;
+}
+.prev-next .next:hover{
+    background-position: -42px 0;
+}
+.to-top{
+    width: 26px;
+    height: 206px;
+    position: fixed;
+    bottom: 350px;
+    right: 50%;
+    margin-right: -656px;
+    /* left+margin-left+width+margin-right+right=视口大小 */
+    /* auto   0          26px   0            50%         */
+    /* 则left要变大（往左移动） 则ml 与 mr 要减小  ml改变为-200则左边移动 所以不能设置ml 设置为mr  */
+}
+.top  a{
+    display: block;
+    height: 42px; 
+    background-repeat:no-repeat ;
+    background-size: 20px;
+    background-position: center center;
+}
+.top .yp{
+    background-image: url('./demos/assets/images/yp.png');  
+}
+.top .yp:hover{
+    background-image: url('./demos/assets/images/phone.png');
+}
+.top .yu{
+    background-image: url('./demos/assets/images/yu.png');
+}
+.top .yu:hover{
+    background-image: url('./demos/assets/images/user.png');
+}
+.top .ys{
+    background-image: url('./demos/assets/images/ys.png');
+}
+.top .ys:hover{
+    background-image: url('./demos/assets/images/设置.png');
+}
+.top .ye{
+    background-image: url('./demos/assets/images/ye.png');
+}
+.top .ye:hover{
+    background-image: url('./demos/assets/images/earphone.png');
+}
+.top .yc{
+    background-image: url('./demos/assets/images/yc.png');
+}
+.top .yc:hover{
+    background-image: url('./demos/assets/images/cart.png');
+}
+.ad{
+    height: 170px;
+    margin-top: 14px;
+}
+.ad .short-cut,
+.ad .ad-img,
+.ad li{
+    float: left;
+}
+.ad .short-cut{
+    width: 228px;
+    height: 168px;
+    background-color: hsl(28, 9%, 34%);
+    margin-right: 14px;
+    padding-top: 2px;
+    padding-left: 6px;
+}
+.ad .short-cut li{
+    position: relative;
+}
+.ad .short-cut li::before{
+    content: '';
+    position: absolute;
+    width: 64px;
+    height: 1px;
+    background-color:#665e57;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.ad .short-cut li::after{
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 70px;
+    background-color:#665e57;
+    left: 0;
+    top: 6px;
+    margin: auto 0;
+
+}
+.ad .short-cut a{
+    display: block;
+    color: #cfccca;
+    height: 84px;
+    width: 76px; 
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 18px;
+}
+.ad .short-cut a:hover{
+    color: white;
+}
+.ad .short-cut img{
+    width: 24px;
+    display: block;
+    margin: 0 23px 4px;
+    
+}
+.ad .ad-img li{
+   width: 316px; 
+   margin-right: 15px;
+}
+.ad .ad-img li:last-child{
+    margin-right: 0px;
+}
+.ad .ad-img img{
+    width: 100%;
+    vertical-align: top;
+}

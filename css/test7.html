@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        body{
+           font:12px/1.5 Microsoft;
+        }
+        /* .clearfix::before,.clearfix::after{
+                content: '';
+                display: table;
+                clear: both;
+
+        }
+        .top-bar-wrapper{
+            width: 100%;
+            background-color: #e3e4e5;
+            height: 30px;
+            line-height: 30px;
+            border-bottom: 1px solid #ddd;
+        }
+        .top-bar{
+            width: 1190px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .top-bar a,
+        .top-bar span,
+        .top-bar .icon{
+           color: #999;
+           text-decoration: none;
+        }
+        .top-bar a:hover,
+        .top-bar a.highlight{
+            color: #f12105;
+        }
+        .top-bar
+        .location{
+            float: left;
+        }
+        .location .icon{
+            color: red;
+        }
+        .location .city-list{
+            width: 320px;
+            height: 436px;
+            background-color:white;
+            display: none;
+            border: 1px solid rgb(204,204,204);
+            position: absolute;
+            box-shadow: 0 2px 2px rgba(0,0,0,.2);
+            top:31px;
+            z-index: 999;
+        }
+        /* hover一定是给父元素 */
+        /*.location:hover .city-list{
+             display: block;
+        }
+       
+        .current-city{
+            padding: 0 10px;
+            border: 1px solid transparent;
+            border-bottom: none;
+            position: relative;
+            z-index: 1000;
+        }
+        .current-city:hover{
+            background-color: white;
+            
+            padding-bottom: 1px;
+        }
+
+        .shortcut{
+               float: right;
+        }
+        .shortcut li{
+            float: left;
+        }
+        .shortcut .line{
+               width: 1px;
+               height: 10px;
+               background-color:rgb(204,202,202);
+               margin: 12px 12px 0px;
+        } */
+        .top-bar-wrapper{
+            width: 100%;
+            background-color: #e3e4e5;
+        }
+        .icon{
+            width: 10px;
+            height: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="top-bar-wrapper">
+        <ul class="top-bar clearfix">
+            <div class="location">
+                 <div class="current-city">
+                    <svg t="1585184193828" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6667" width="200" height="200"><path d="M511.717567 127.981836c34.606169 0 68.116377 6.704702 99.598393 19.928889 30.468942 12.797467 57.817824 31.142278 81.289398 54.525847 48.328705 48.146557 74.943876 112.571868 74.943876 181.406606 0 37.119409-7.90504 79.557964-23.496134 126.136816-14.530948 43.412742-35.730783 90.39273-63.010079 139.63627-58.604746 105.791441-129.349997 194.2184-169.326477 240.706177C471.734948 843.819315 400.986627 755.37496 342.395184 649.616264c-27.282367-49.244564-48.484248-96.225575-63.017242-139.63627-15.59314-46.578852-23.499204-89.017406-23.499204-126.135792 0-68.834738 26.616194-133.26005 74.9449-181.406607 23.471574-23.38357 50.821479-41.72838 81.291444-54.525847 31.483038-13.225209 64.99427-19.929912 99.602485-19.929912m0-63.956637c-176.35966 0-319.794443 141.665487-319.794443 319.817979 0 186.559976 159.91206 420.09073 276.493242 554.182728 0.435928 0.523933 19.150152 21.444405 42.284035 21.444405h2.029216c23.134907 0 41.84299-20.924565 42.289152-21.444405 116.605741-134.093021 276.489148-367.627868 276.489149-554.182728-0.001023-178.152493-143.43683-319.817979-319.790351-319.817979z" p-id="6668"></path><path d="M511.706311 319.863005c35.270295 0 63.964824 28.694529 63.964824 63.964824s-28.694529 63.964824-63.964824 63.964824-63.964824-28.694529-63.964824-63.964824 28.694529-63.964824 63.964824-63.964824m0-63.956638c-70.64906 0-127.921461 57.272401-127.921461 127.921462s57.272401 127.921461 127.921461 127.921461 127.921461-57.272401 127.921461-127.921461-57.272401-127.921461-127.921461-127.921462z" p-id="6669"></path></svg>
+                     <a href="javascript:;">北京</a>
+                 </div>
+                 <div class="city-list">
+                    
+                 </div>
+            </div>
+            <ul class="shortcut clearfix">
+                <li>
+                    <a href="#">你好，请登录</a>
+                    <a href="#" class="highlight">免费注册</a>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <a href="#">我的订单</a>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <a href="#">我的京东</a>
+                    <svg t="1585182962946" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3477" width="200" height="200"><path d="M511.31 669.4a61.19 61.19 0 0 1-43.25-17.79l-237.12-237.2a35 35 0 0 1 49.55-49.55l230.89 230.9 230.9-230.89a35 35 0 1 1 49.55 49.55L554.7 651.54a61.41 61.41 0 0 1-43.39 17.86z" fill="#42494F" p-id="3478"></path></svg>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <a href="#">京东会员</a>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <a href="#" class="highlight">企业采购</a>
+                    <svg t="1585182962946" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3477" width="200" height="200"><path d="M511.31 669.4a61.19 61.19 0 0 1-43.25-17.79l-237.12-237.2a35 35 0 0 1 49.55-49.55l230.89 230.9 230.9-230.89a35 35 0 1 1 49.55 49.55L554.7 651.54a61.41 61.41 0 0 1-43.39 17.86z" fill="#42494F" p-id="3478"></path></svg>
+                </li>
+                <li class="line">
+        
+                </li>
+                <li>
+                    <span>客户服务</span>
+                    <svg t="1585182962946" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3477" width="200" height="200"><path d="M511.31 669.4a61.19 61.19 0 0 1-43.25-17.79l-237.12-237.2a35 35 0 0 1 49.55-49.55l230.89 230.9 230.9-230.89a35 35 0 1 1 49.55 49.55L554.7 651.54a61.41 61.41 0 0 1-43.39 17.86z" fill="#42494F" p-id="3478"></path></svg>
+                </li>
+
+                <li class="line"></li>
+                <li>
+                    <span>网站导航</span>
+                    <svg t="1585182962946" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3477" width="200" height="200"><path d="M511.31 669.4a61.19 61.19 0 0 1-43.25-17.79l-237.12-237.2a35 35 0 0 1 49.55-49.55l230.89 230.9 230.9-230.89a35 35 0 1 1 49.55 49.55L554.7 651.54a61.41 61.41 0 0 1-43.39 17.86z" fill="#42494F" p-id="3478"></path></svg>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <span>手机京东</span>
+                    <svg t="1585182962946" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3477" width="200" height="200"><path d="M511.31 669.4a61.19 61.19 0 0 1-43.25-17.79l-237.12-237.2a35 35 0 0 1 49.55-49.55l230.89 230.9 230.9-230.89a35 35 0 1 1 49.55 49.55L554.7 651.54a61.41 61.41 0 0 1-43.39 17.86z" fill="#42494F" p-id="3478"></path></svg>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

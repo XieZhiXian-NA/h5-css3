@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+            /* 
+               伪元素：表示页面中一些特殊的并不真实存在的元素（特殊的位置）
+                ::first-letter 第一个字母
+                ::befor  标签元素开始位置
+                ::after  标签元素结束位置
+                   ---必需结合content属性 才能展示出来
+
+                伪类：不存在的类 描述一个元素的特殊状态 被点击、鼠标移入、第一个子元素
+                  :first-child li:first-child li是第一个子元素
+                  li:nth-child(x) li是第x个子元素
+                    特殊值 n:0-正无穷 全选中 (2n | even)偶数位 （2n+1 | odd）奇数位
+                  li:first-of-type相同类型的元素 选择第一个
+                  :not()排除某些符合条件的元素  
+                  ----li:not(:nth-child(3))
+
+                  :link 没访问过的链接
+                  :visited 访问过的链接 只能修改颜色
+                 
+                  :hover 移入鼠标 所有的元素都可用
+                  :active 鼠标点击 -------------
+             */
+             /*
+              样式的继承：发生在祖先与后代之间 将统一的样式设置到共同的祖先元素上
+              并不是所有的样式都会被继承 背景(background-color)、布局等
+              没有设置背景默认就是透明的  子元素的背景是透明的 父元素的背景透过了子元素 子元素也就像继承一样显示父元素的背景
+             
+              权重：!important 》 内联样式 》 id选择器 》 类/伪类选择器 》元素选择器 》通配选择器* 》继承样式
+              +a 相加计算权重 除了分组选择器div,p,span{}单独计算 不相加
+              +b 选择器的相加 单独的一种类型 如：多个类选择器相加最大值即使很大优先级也不会超过id/内联
+              +c 权重相同时，优先选择最下面的选择器 
+              +d *任何选择器都会覆盖它
+              样式冲突 不同的选择器选择同一个的元素同一个属性不同的值 
+               
+              单位
+              +a  长度单位 像素px越小 越清晰
+                  相同的像素在不同的显示屏下 大小不一样
+               百分比
+                  属性值相对于父元素内容区属性值的百分之几 随父元素改变而该变
+               em 移动端
+               相对于自身元素字体大小 默认字体大小16px 随字体的大小而改变
+               rem 移动端
+               相对于根元素字体的大小 html
+
+              颜色单位
+              +a   颜色名设置 red
+              +b   rgb(1,0,0)  三种颜色的不同浓度来表示不同的颜色 0-255
+              +c   rgba(1,0,0,.5)
+              +d   十六进制 00~ff  #bbffaa
+              p标签不能放任何的块元素
+              */
+             /* 
+               文档流 网页有多层 一层一层堆叠而成 css为每一层设置样式 最下面一层称为文档流
+               所创建的元素默认都是在文档流中排列
+               元素状态 ：在文档流中  脱离文档流
+               --在文档流中
+               块元素 会在页面中独占一行
+                     默认宽：把父容器铺满
+                     默认高：被内容撑开(子元素)
+               行内元素 不会独占一行 水平排列 一行排列不了 下一行
+                     默认宽、高：都是被内容撑开
+               --盒模型
+                 对页面的布局就是摆放盒子到指定的位置
+                 content:内容区   大小由height、width设置
+                 padding:内边距 背景色设置会延申至内边距 不仅仅只是内容区显示
+                                padding-top padding-bottom
+                                padding-right padding-left
+
+                 border:边框   width 样式(solid) color   ---  border-width 指定四个方向的边框的宽度 值按顺时针 上右下左
+                 border-right:none不设置样式                               三个值 上 左右 下
+                                                                          border-top-width 单独指定
+                                                            border-color 边框的颜色
+                
+                 margin:外边距 设置与其它盒子的间距 不会影响盒子可见宽的大小 会影响位置
+                 设置正值 向相同的方向
+                 元素在页面中是自左向右的顺序排列 设置左、上移动元素自身 设置下、右移动的是其他元素
+                 设置负值 向相反的方向移动
+                 margin-right 设置默认不会有任何影响 一般由浏览器自动调整
+
+                块元素盒模型
+                水平方向布局
+                元素在父元素中的水平方向的位置由以下几个属性决定
+                margin-left 0
+                border-left 0
+                padding-left 0
+                width auto
+                padding-right 0
+                border-right 0
+                margin-right 0
+                子元素在父元素中 父元素内容区=（margin-left + border-left + padding-left + width + padding-right + border-right + margin-right）
+                以上等式必须成立 若等式不成立 过度约束 等式会自动调整
+                1:如果没有auto 会自动调整margin-right 使等式成立
+                2:有三个值 width margin-left margin-right三个值可以设置为auto 若其中有一个设置了auto 调整设置了auto的值
+                3:若width:auto且margin-left:auto 则宽度会最大 margin-left=0
+                4:margin-left=auto且margin-right=auto width设置为固定 则左右两边宽度一样 用来设置水平居中 A---maign:0 auto B--子元素宽度设置固定值 
+                5:若width>父元素的内容区 为了使等式成立 则浏览器调整margin-right为负值
+                
+                垂直方向布局
+                父容器的高度：默认子元素撑开的高度
+                如果子元素的高度超出了父元素的高度 子元素会从父元素中溢出
+                在父元素上设置overflow处理溢出
+                visible:溢出部分会显示
+                hidden:溢出部分隐藏 看不见
+                scroll:生成两个滚动条 查看完整的内容
+                auto:根据需要自动生成滚动条 水平/垂直/水平-垂直
+                
+                相邻垂直方向的外边距折叠(重叠)                      兄弟A       兄弟B
+                   -兄弟元素：相邻垂直外边距 两者都为正值 取Math.max(margin-top,margin-bottom) good
+                   -父子元素：相邻垂直上外边距 子元素的上外边距会传递给父元素 erro
+                    
+
+            
+                行内元素盒模型 像一个字 两个字之间会有间隙
+                --不支持设置width height
+                --垂直方向padding  A 不会影响页面布局 但是会覆盖B元素一部分
+                  垂直方向border---------------------------------------
+                  垂直方向margin--------------------margin-bottom不会使相邻元素下移
+                  水平方向上的margin-right margin-left不会折叠 会相加
+
+
+                display:设置元素显示的状态 为块元素还使行内元素
+                将行内《=》块元素互相转化
+                inline-block 既可以设置宽高又不会独占一行 //不推荐使用
+                table表格 
+                none元素不在页面中显示不占据位置
+                visibility:
+                   visible:元素正常显示
+                   hidden:隐藏 位置依然占据位置
+                
+                浏览器默认样式
+                默认样式的存在会影响页面的布局 通常情况下 去除浏览器默认的样式
+                简单页面布局      
+                *{
+                    margin:0;
+                    padding:0
+                }
+                复杂页面布局清除干净 引入别人写好的重置样式表 reset完全清除 normalize会统一样式
+                图片只要设置一个值 高度会自动按比例缩放 
+                让文字在父元素中居中 则只要在父元素中设置line-height = 父元素的高度height 
+                line-height: 25px;
+
+                盒子大小
+                设置盒子尺寸的计算方式(width height)
+                box-sizing:
+                          content-box 宽度和高度是设置内容区域的大小
+                          border-box  宽度和高度是设置可见区的大小
+              */
+             /* 
+               轮廓
+               outline:设置元素的轮廓线 用法与border一样 不会影响到可见框的大小 不会影响到页面的布局
+               阴影
+               box-shadow:用来设置元素的阴影效果  不会影响到页面的布局 10px 10px 10px color
+                         默认是在元素的正下方
+                         设置阴影的偏移量 
+                           ---水平偏移量--margin-left 
+                           ---垂直偏移量--margin-top
+                           ---阴影的模糊半径 值越大 越模糊越像影子
+                           ---颜色rgba(0,0,0,.3)透明的颜色
+               圆角
+               border-radius 
+               border-top-left-radius :10px 10px;  水平方向半径 垂直方向半径  不同是是椭圆 相同时是圆
+               圆 border-radius:50%
+                           
+             */
+             /* 
+              浮动 可以使多个元素横向排列
+              使一个元素向其父元素的左侧或者右侧浮动
+              float:none
+                    left 向左浮动(移动)
+                    right
+               元素设置为浮动，水平布局的等式不需要强制成立
+               且其完全从文档流中脱离 不再占据文档流（父元素）的位置 所以处于其下方的元素会自动向上移动
+               1：元素移动时特点 默认不会从父元素中移出 父元素有边界 只能在父元素边界:范围内浮动
+               2：浮动元素向左、向右浮动时，不会超过他前边的其他浮动元素A B C的排列 水平
+               3：浮动元素不会超过它上边浮动的兄弟元素，最多最多就是和它一样的高垂直 A
+               浮动元素A不会盖住文字(p标签) 文字环绕浮动元素                       B C
+               脱离文档流特点
+               块元素
+                  1：块元素不在独占页面一行
+                  2：块元素的宽度和高度默认都被内容撑开
+               不再区分块元素和行内元素
+
+               浮动缺点
+               高度塌陷
+                  父元素高度一般不写死 就是为了随着子元素内容变化而变化
+                  1：父元素高度（不设置height）默认是子元素内容撑开 
+                     但是当子元素浮动后 脱离文档流 无法撑起父元素的高度 导致父元素的高度丢失 处于下面的元素就会上移 页面布局混乱
+                  解决方式
+                  +aa   BFC(block Formatting Context)块级格式化环境
+                     是css隐含的属性，可以为一个元素开启BFC 开启BFC该元素会变成一个独立的布局区域
+                     特点：不会被浮动元素所覆盖A A设置为Float后  B开启BFC B不会上移 不会被覆盖
+                                             B
+                           子元素和父元素的外边距不会重叠 父元素开启BFC
+                           开启BFC元素可以包含浮动的子元素
+                     overflow:hidden最常见的开启BFC方式
+                  +bb clear 清除浮动元素对当前元素产生的影响
+                            left  清除float：left的元素    A
+                            right 清除float:right的元素     b
+                            both  清除两者最大影响的元素     c  为c清除浮动
+                      设置清除浮动以后 浏览器会自动为当前元素添加一个上外边距 以使其位置不会受浮动元素的影响
+                      11:这种方式是在页面中多添加一个标签 还是要用css解决
+                      12:添加伪元素  但是是行内元素不独占一行显示 还是撑不起高度 .box2::after{
+                         content:''; 
+                         clear:both;
+                         display:table
+                      }
+                     解决子元素和父元素的外边距重叠
+                     父元素::before{
+                        content:'';
+                        display:table
+                     }
+                     clearfix类 解决了高度塌陷和外边距重叠 
+                 */
+             /* 
+               position
+                  通过定位 将元素摆放到任意位置
+                  static:元素是静止的没有开启定位
+                  只有当元素开启了定位 才可以设置offset(偏移量) 只会移动自己 不会影响他人 margin-top会影响其他元素 其他元素也会移动
+                  垂直方向 top bottom
+                  水平方向 left right
+                  relative:相对定位
+                           特点：1:不设置偏移量 元素不会发生任何变化
+                           偏移量offset 
+                  absolve:绝对定位
+                  fixed:固定定位
+                  sticky:粘滞定位
+
+             */
+             
+                 .box1{
+                  border: 2px solid red;
+                  /* float:left */
+                  
+               }
+               .box2{
+                  width: 100px;
+                  height: 200px;
+                  background-color: steelblue;
+                  float: left;
+               }
+               .box3{
+                  clear: left;
+               }
+       
+    </style>
+</head>
+<body>
+   <div class="box1" clearfix>
+      <div class="box2"></div>
+      <div class="box3"></div>
+   </div>
+</body>
+</html>
