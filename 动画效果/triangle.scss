@@ -1,0 +1,199 @@
+
+.timeline-content{
+    display: flex;
+    margin-bottom: 100px;
+    .time-line{
+       padding: 10px 10px 10px 20px;
+       position: relative;
+       &::before{
+         content: '';
+         height: 1px;
+         width: calc(100% - 34px);
+         background: #EBEBEB;
+         position: absolute;
+         top:0;
+         left: 24px;
+       }
+    }
+    .state-icon{
+        width: 20px;
+        height: 20px;
+         position: absolute;
+         top: -12px;
+        left: 0;
+      }
+    .state-1{
+        background: url('https://static.daojia.com/assets/project/tosimple-pic/fen-zu-7-copy-6bei-fen_1589266208621.png') no-repeat;
+        background-size: cover;
+      }
+      .state-2{
+        background: url('https://static.daojia.com/assets/project/tosimple-pic/12_1589266226040.png') no-repeat;
+        background-size: cover;
+      }
+      .state-3{
+        background: url('https://static.daojia.com/assets/project/tosimple-pic/fen-zu-7-copy-3_1589266140087.png') no-repeat;
+        background-size: cover;
+      }
+}
+.scroll-container{
+  height: 80px;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 15px;
+  overflow: auto;
+  border:1px solid rgb(195, 228, 76);
+  &::-webkit-scrollbar{
+      width: 8px;
+      background: white;
+  }
+  &::-webkit-scrollbar-corner,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-thumb{
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-corner,
+  &::-webkit-scrollbar-track {
+    /* 滚动条轨道 */
+    background-color: rgba(180, 160, 120, 0.1);
+    box-shadow: inset 0 0 1px rgba(180, 160, 120, 0.5);
+  }
+  &::-webkit-scrollbar-thumb {
+    /* 滚动条手柄 */
+    background-color: #00adb5;
+  }
+  margin-bottom: 50px;
+}
+.coupon{
+    p,h4{
+        margin: 0;
+    }
+    box-sizing: border-box;
+    width: 300px;
+    height: 100px;
+    display: flex;
+    padding: 10px 20px 10px 20px;
+    border: 1px solid transparent;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    background: radial-gradient(circle at right bottom, transparent 10px, #ffffff 0) top right /50% 50px no-repeat,
+    radial-gradient(circle at left bottom, transparent 10px, #ffffff 0) top left / 50% 50px no-repeat,
+    radial-gradient(circle at right top, transparent 10px, #ffffff 0) bottom right / 50% 50px no-repeat,
+    radial-gradient(circle at left top, transparent 10px, #ffffff 0) bottom left / 50% 50px no-repeat;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,.2));
+
+    >p{
+        font-size: 32px;
+        font-weight: bolder;
+        color: rgb(245, 75, 46);
+        
+        span{
+            font-size: 10px;
+            padding-left: 5px;
+            position: relative;
+            right: -10px;
+            bottom: -3px;
+        }
+    }
+    .coup-inner{
+        height: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        p{
+            height: 20px;
+            font-size:15px;
+            color: gray;
+        }
+    }
+  margin-bottom: 20px;
+
+}
+.sha{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    .tri{
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 25px 40px 25px;
+    border-color: transparent transparent  rgb(245, 129, 127) transparent;
+    filter: drop-shadow(10px 0px 10px rgba(238, 125, 55,0.5));
+    }
+    .rect{
+        width: 80px;
+        height: 40px;
+        background: radial-gradient(circle at bottom right,transparent 20px,rgb(245, 129, 127) 15px);
+        filter: drop-shadow(2px 2px 2px rgba(238, 125, 55,0.9));
+    }
+    .cir{
+        width: 100px;
+        height: 40px;
+        border: 1px solid rgb(245, 129, 127);
+        border-radius: 4px;
+        background: #fff;
+        position: relative;
+        box-sizing: border-box;
+        &::before{
+           content: '';
+           width: 0px;
+           height: 0px;
+           position: absolute;
+           border-style: solid;
+           border-width: 0 10px 10px 10px;
+           border-color: transparent transparent rgb(255, 255, 255) transparent;
+           left:0;
+           right: 0;
+           margin: auto;
+           top: -10px;
+           z-index: 2;
+        
+        }
+        &::after{
+            content:"";
+            width: 0px;
+            height: 0px;
+            border-style: solid;
+            border-width: 0 10px 10px 10px;
+            border-color: transparent transparent rgb(245,129,127) transparent;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top:-11px;
+            z-index: 1;
+
+        }
+
+    }
+}
+  .odd-shadow{
+      // margin-left: auto;
+      // margin-right: auto;
+      width: 200px;
+      height: 80px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 24px;
+      text-align: center;
+      line-height: 80px;
+      background: #06c;
+      //border: 1px solid red;
+      filter: drop-shadow(2px 2px 2px rgba(0,0,0,.8));
+      position: relative;
+  }
+  .odd-shadow::before{
+      content: '';
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      left:-20px;
+      top:0;
+      margin: auto;
+      bottom: 0;
+      border: 10px solid transparent;
+      border-right-color:#06c;
+  }
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./triangle.css">
+    <style>
+        html,body{
+            padding: 0;
+            margin: 100px 100px;
+        }
+        .triangle{
+           
+            /* width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 40px 25px 0px 25px;
+            /* background: rgb(188, 228, 12); */
+            /* border-color: rgba(245,129,127) transparent transparent transparent;  */ 
+            padding: 100px;
+            border:10px dashed transparent;
+            /* 使用的是多组背景，前面的背景颜色会覆盖后面的背景色 */
+            background: linear-gradient(white,rgb(167, 92, 92)) padding-box, repeating-linear-gradient(-45deg,#ccc 0, #ccc .25em,white 0,white .75em);
+
+
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="app" >
+        <div class="timeline-content">
+            <div v-for='(item, index) in timeLine' :key='index' class="time-line">
+              <div :class="`state-${item.state} state-icon`"></div>
+              <div class="timeline-title">{{item.title}}</div>
+            </div>
+          </div>
+          <div class="scroll-container">
+            +和-运算符在运算符和值之间需要一个空格。例如，它将被calc(50% -8px)解释为百分比，
+            后跟负像素长度。只有在-到8px之间有空格时，才可以正确减法：calc(50% - 8px) 
+            空格在乘法或除法中不起作用，但建议阅读时要注意。
+            +和-运算符在运算符和值之间需要一个空格。例如，它将被calc(50% -8px)解释为百分比，
+            后跟负像素长度。只有在-到8px之间有空格时，才可以正确减法：calc(50% - 8px) 
+            空格在乘法或除法中不起作用，但建议阅读时要注意。
+          </div>
+
+          <div class="coupon">
+              <p>200<span>元</span></p>
+              <div class="coup-inner">
+                  <h4>新人满减券</h4>
+                  <div class="pp">
+                       <p>满800元可用</p>
+                      <p>有效期至2020.06.30</p>
+                  </div>
+                 
+                  
+              </div>
+          </div>
+         
+          <div class="sha">
+               <div class="tri"></div>
+                <div class="rect"></div>
+                <div class="cir"></div>
+          </div>
+            
+            <div class="odd-shadow"></div>
+         
+        </div>
+      <script src="./vue.js"></script>
+      <script>
+          new Vue({
+              el: "#app",
+              data(){
+                  return{
+                      timeLine:[
+                          {state:1,title:"节点：提交审核"},
+                          {state:2,title:"审核失败--提交资料有误，请重新上传"},
+                          {state:3,title:"节点：再次提交审核"},
+                          {state:1,title:"节点：审核通过-同意，已批"}
+                      ]
+                  }
+              }
+            })
+      </script>
+</body>
+</html>

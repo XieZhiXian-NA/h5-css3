@@ -1,0 +1,104 @@
+.container{
+    display: flex;
+    flex-direction: column;
+
+    .box{
+        width: 300px;
+        height: 200px;
+        border: 1px solid red;
+        position: relative;
+        margin-bottom: 50px;
+        .back{
+            background: url(http://www.imaoda.com/s/img/github/21.jpg) no-repeat;
+            height: 100%;
+            width: 100%;
+        }
+        .modal{
+            height: 20%;
+            width: 100%;
+            color: white;
+            position: absolute;
+            background: rgba(0,0,0,.5);
+            bottom: 0;
+        }
+        
+    }
+    .box1{ 
+        height: 200px;
+        width: 300px;
+        position: relative;
+        background:fixed url(http://www.imaoda.com/s/img/github/21.jpg);
+        .blur-back{
+               position: absolute;
+               top:150px;
+              height: 50px;
+              width: 300px;
+              background: fixed url(http://www.imaoda.com/s/img/github/21.jpg);
+              filter: blur(1rem );
+            }
+        .blur-modal{
+            position: absolute;
+            top: 150px;
+            height: 50px;
+            width: 300px;
+            background: rgba(0,0,0,.2);
+            color: white;
+        }
+    margin-bottom: 20px;}
+    .suit{
+        position: relative;
+        margin-bottom: 20px;
+        .figure{
+            background:  url(http://www.imaoda.com/s/img/github/21.jpg);
+            width: 400px;
+            height: 200px;
+            background-size:200%;
+            filter: blur(16px);
+        }
+        .modal{
+            height: 200px;
+            width: 400px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background: rgba(0,0,0,.5);
+            color: white;
+            text-align: center;
+        }
+    }
+    .watch-content{ 
+        width:500px;
+        height: 300px;
+        background: #003366;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+       .watch{
+          height: 180px;
+          width: 400px;
+          
+          background:url(http://www.imaoda.com/s/img/tpl/content-frame1.png) no-repeat; ;
+          background-size: contain;
+          background-position: center;
+          color: white;
+          text-align: center;
+        } 
+    }
+    .future{
+        background: black;
+        padding: 10px;
+        width:45rem ;
+        .inner{
+            height: 20rem;
+            width: 40rem;
+            padding: 1rem;
+            color: white;
+            box-shadow: 0 0 3rem rgba(100,200,255,.5) inset;
+            background: rgba(0,0,0,.3);
+
+        }
+    }
+    
+}
+

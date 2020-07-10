@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css?family=Bubblegum+Sans&display=swap');
+html,body{
+    margin: 0;
+    padding: 0;
+}
+@function float-text-3d($shadow-color:#bbb,$depth:10,$floating:false){
+        $shadows:();
+        @for $i from 1 through $depth {
+            @if ($floating == false  and $i > $depth / 2){
+                $shadow-color:transparent
+            }
+            $shadow:append($shadows, 0 ($i *1px) $shadow-color, comma);
+        }
+        @if($floating == false){
+            $shadows: append($shadows, 0 10px 10px rgba(0,0,0,.4),comma)
+        }@else{
+          $shadows:append($shadows, 0 50px 25px rgba(0,0,0,.2), comma)
+        }
+        @return $shadows
+    }
+.content-wrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    flex-wrap: wrap;
+     background-color: rgb(0, 0, 0);
+    padding: 20px;
+    .shining{
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        height: 100px;
+        line-height: 100px;
+        width: 30%;
+        text-align: center;
+        text-transform: uppercase;
+        background: linear-gradient(90deg,rgba(0,0,0,1) 0%,rgba(255,255,255,1) 50%,rgba(0,0,0,1) 100%);
+        background-repeat: no-repeat;
+        letter-spacing: 4px;
+        color: transparent;
+        font-size: 2rem;
+        background-size: 80%;
+        -webkit-background-clip:text;
+        background-clip: text;
+       animation: shining 5s linear infinite;
+        @keyframes shining {
+            from{
+                background-position: -500%;
+            }
+            to {
+                background-position: 500%;
+              }
+        }
+    }
+    .inner{
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        list-style-type: none;
+        li{
+            padding: 0px 6px;
+            a{
+                font-size:30px;
+                font-weight: 700;
+                text-decoration: none;
+                text-transform: uppercase;
+                --fill-color:#198ce6;
+                -webkit-text-stroke: 2px var(--fill-color);
+                color: transparent;
+                background: linear-gradient(var(--fill-color) 0 100%) left / 0 no-repeat;
+                -webkit-background-clip: text;
+                background-clip:text;
+                transform:  0.5s linear;
+                &:hover{
+                    background-size: 100%;
+                }
+
+            }
+        }
+    }
+    .rainbow{
+        letter-spacing: 0.2rem;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        span{
+            animation: rainbow 50s alternate infinite forwards;
+        }
+        @keyframes rainbow {
+            @for $i from 0 through 20 {
+                #{percentage($i * 0.05)}{
+                    color: hsl(random(360%), 75, 75);
+                }
+            }
+        }
+    }
+    .neon{
+        color: #cce7f8;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        animation: shinings 0.1s alternate infinite;
+        @keyframes shinings {
+            from{
+                text-shadow: 0 0 6px rgba(182,211,207,.09),
+                0 0 30px rgba(182, 211, 207, 0.3), 0 0 12px rgba(15, 115, 223, 0.5),
+                0 0 21px rgba(15, 115, 223, 0.9), 0 0 34px rgba(15, 115, 223, 0.8),
+                0 0 54px rgba(15, 115, 223, 0.9);
+            }
+            to {
+                text-shadow: 0 0 6px rgba(182, 211, 207, 1),
+                  0 0 30px rgba(182, 211, 207, 0.4), 0 0 12px rgba(15, 115, 223, 0.6),
+                  0 0 22px rgba(15, 115, 223, 0.8), 0 0 38px rgba(15, 115, 223, 0.9),
+                  0 0 60px rgba(15, 115, 223, 1);
+              }
+        }
+    }
+    .grow-wrapper{
+        width: 40%;
+        p{
+            margin: 0 5em 4em 5em;
+        }
+        h1,p{
+            text-align: left;
+            line-height: 1.8;
+        }
+        .glowIn {
+            color: white;
+          
+            span {
+              animation: glow-in 0.8s  both ;
+            }
+          }
+          @keyframes glow-in {
+            from {
+                opacity: 0;
+              }
+              65% {
+                opacity: 1;
+                text-shadow: 0 0 25px white;
+              }
+              75% {
+                opacity: 1;
+              }
+              to {
+                opacity: 0.7;
+              }
+          }
+    }
+    .loading{
+        display: flex;
+        color: white;
+        font-size: 5em;
+        background: #2980b9;
+        text-transform: uppercase;
+        span{
+           text-shadow: float-text-3d($floating:false);
+           transform: translateY(20px);
+           animation: bounce 0.3s ease infinite alternate;
+        }
+        @keyframes bounce {
+            to {
+              text-shadow: float-text-3d($floating: true);
+              transform: translateY(-20px);
+            }
+          }
+    }
+    .bubbling{
+        background: #3498db;
+        color: white;
+        position: relative;
+        z-index: 2;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        display: inline-block;
+        font-family: 'Bubblegum Sans', cursive;
+    }
+    
+}
+@mixin center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navtab{
+    --navtab-width:600px;
+    --navtab-item-width:calc(var(--navtab-width) / 4 - 20px);
+    --navtab-overlay-width: calc(var(--navtab-item-width) + 80px);
+    --active-index: 0;
+    width: 600px;
+    height: 150px;
+    background-color: white;
+    border: 1em solid white;
+    border-radius: 5% 5% 15% 15% / 15% 15% 50% 50%;
+    overflow: hidden;
+    position: relative;
+    ul{
+        list-style-type: none;
+        @include center;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+       
+        .navtab-item{
+            @include center;
+            z-index: 2;
+            color: #0288d1;
+            flex-direction: column;
+            width:var(--navtab-item-width);
+            height: 100%;
+            cursor: pointer;
+            transition: 0.5s ease;
+            svg{
+                transition: 0.5s ease;
+            }
+            span{
+                font-size: 20px;
+                user-select: none;
+                opacity: 0;
+                transition: 0.5s ease;
+            }
+            &.active {
+                width: var(--navtab-overlay-width);
+        
+                svg {
+                  transform: translateY(-10px);
+                }
+        
+                span {
+                  opacity: 1;
+                }
+              }
+        }
+    }
+    &::after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: var(--navtab-overlay-width);
+        background: #b3e5fc;
+        border-radius: 20px;
+        transform: translateX(calc(var(--navtab-item-width) * var(--active-index)));
+        transition: 0.5s ease;
+      }
+}
+@mixin circle($r:2em) {
+     width: $r;
+     height: $r;
+     border-radius: 50%;
+}
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;    
+}
+.progress{
+    --value:0;
+    --duration: 3s;
+    --dark-color:rgba(0,0,0,0.25);
+    --light-color:cyan;
+    position: relative;
+    width: 25em;
+    height: 1em;
+    animation: loading var(--duration) ease-out forwards;
+    .progress-bar{
+        height: inherit;
+        //background: var(--dark-color);
+        background-color: red;
+        .progress-value{
+            width: calc(var(--value) * 1%);
+            height: inherit;
+            background: var(--light-color);
+        }
+        .progress-indicator{
+            @include circle;
+            position: absolute;
+            z-index:2;
+            background: #222;
+            border: 4px solid var(--light-color);
+            left: calc(-12px + var(--value) * 4.3px);
+            top:-13px;
+            counter-reset: progress var(--value);
+            &::after{
+                @include center;
+                position: absolute;
+                content: counter(progress) "%";
+                width: 100%;
+                height: 100%;
+                color: var(--light-color);
+                font-size: 9px;
+            }
+        }
+        .progress-start{
+            @include circle;
+            position: absolute;
+            top:-13px;
+            left: -12px;
+            background: #222;
+            border: 4px solid var(--light-color);
+            svg{
+                @include center;
+                width: 100%;
+                height: 100%;
+                transform: scale(0.6);
+            }
+        }
+        .progress-end {
+            @include circle;
+            position: absolute;
+            top: -13px;
+            right: -12px;
+            background: #222;
+            border: 4px solid var(--dark-color);
+        
+            svg {
+              @include center;
+              width: 100%;
+              height: 100%;
+              transform: scale(0.6);
+              opacity: 0.25;
+            }
+        }
+    }
+    @keyframes loading {
+        @for $i from 0 through 100 {
+          #{$i * 1%}  {
+            --value: #{$i};
+          }
+        }
+    }
+}
+.shadow{
+    background: rgb(211, 127, 127);
+    filter: drop-shadow(-2px 2px 8px rgba(243, 243, 215, 0.5));
+    .card{
+     clip-path: inset(0 0 70% 0);
+     transform: translateY(30%);
+     transition: 0.5s ease;
+     
+     .card-header{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         width: 400px;
+         height: 100px;
+         font-size: 2em;
+         color: white;
+         background-color: #2979ff;
+         transition: 0.5s ease;
+        //  clip-path: ;
+        clip-path: inset(0 19% 0 19%);
+     }
+     .card-body{
+         box-sizing: border-box;
+         padding: 1.25em;
+         width: 400px;
+         height: 225px;
+         font-size: 1.5em;
+         background: white;
+         clip-path: inset(0 19% 0 19%);
+         transform: 0.5s ease;
+         dl{
+             display: flex;
+             flex-direction: column;
+             justify-content: space-between;
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             span{
+                 opacity: 0;
+                 transform: translateY(100%);
+                 transition: 0.5s ease-in;
+                 @for $i from 1 through 3 {
+                     &:nth-child(#{$i}){
+                         transition-delay: $i * 0.1s;
+                     }
+                 }
+                 dt,
+                 dd{
+                     display: inline;
+                     margin: 0;
+                     svg{
+                         margin-right: 0.3em;
+                     }
+                 }
+        }
+         } 
+        
+     }
+     &:hover{
+         transform: translateY(0);
+         clip-path: inset(0 0 0 0);
+         .card-header,
+         .card-body {
+           clip-path: inset(0 0 0 0);
+            span {
+            opacity: 1;
+            transform: translateY(0);
+          }
+         }
+        
+     }
+   }
+
+}
